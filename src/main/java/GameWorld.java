@@ -24,7 +24,7 @@ public class GameWorld{
      * Adds the specified GameObject to this GameWorld.
      * @param object The GameObject to be added.
      */
-    public void add(GameObject object){
+    public void addGameObject(GameObject object){
         this.objects.add(object);
     }
 
@@ -32,7 +32,7 @@ public class GameWorld{
      * Removes the specified GameObject from this GameWorld.
      * @param object The GameObject to be removed.
      */
-    public void remove(GameObject object){
+    public void removeGameObject(GameObject object){
         this.objects.remove(object);
     }
 
