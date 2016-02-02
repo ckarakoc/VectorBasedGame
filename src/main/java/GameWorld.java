@@ -8,7 +8,10 @@ public class GameWorld{
 
     private ArrayList<GameObject> objects;
 
-    private int 
+    /**
+     * The size of the world in units. Didn't want to use pixels to avoid confusion.
+     */
+    private int unitsX, unitsY;
 
     /**
      * Creates a new GameWorld.
