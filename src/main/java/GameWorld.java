@@ -1,3 +1,5 @@
+import javafx.scene.canvas.Canvas;
+
 import java.util.ArrayList;
 
 /**
@@ -6,11 +8,10 @@ import java.util.ArrayList;
  */
 public class GameWorld{
 
+    //All GameObjects in this GameWorld
     private ArrayList<GameObject> objects;
 
-    /**
-     * The size of the world in units. Didn't want to use pixels to avoid confusion.
-     */
+    //The size of the world in units. Didn't want to use pixels to avoid confusion.
     private int unitsX, unitsY;
 
     /**
@@ -37,11 +38,30 @@ public class GameWorld{
     }
 
     /**
-     * Updates the GameWorld.
+     * Updates the GameWorld, also calls afterUpdate().
      */
     public final void update(){
-
+        for(GameObject object : objects){
+            object.update();
+        }
         afterUpdate();
+    }
+
+    /**
+     * Paints specified coordinates on specified Canvas.
+     * @param canvas
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
+    public void paint(Canvas canvas, int x, int y, int width, int height){
+        for(GameObject object : objects){
+            if(object.getX() >= x && object.getX() < x + width && object.getY() >= y && object.getY() < y + height){
+                //Object within boundaries
+
+            }
+        }
     }
 
     /**
