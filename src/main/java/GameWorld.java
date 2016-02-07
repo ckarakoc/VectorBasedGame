@@ -1,4 +1,5 @@
 import javafx.scene.canvas.Canvas;
+import main.GameWorldFile;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,10 @@ public class GameWorld{
      * Method to be overridden by developers to be able to add code to update(). afterUpdate() is called after update(). (Mind == blown)
      */
     public void afterUpdate(){
+
+    }
+
+    public static GameWorld read(GameWorldFile file){
 
     }
 }
