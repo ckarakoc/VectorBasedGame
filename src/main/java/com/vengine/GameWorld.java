@@ -1,7 +1,6 @@
 package com.vengine;
 
 import javafx.scene.canvas.Canvas;
-import main.GameWorldFile;
 
 import java.util.ArrayList;
 
@@ -14,8 +13,13 @@ public class GameWorld{
     //All GameObjects in this com.vengine.GameWorld
     private ArrayList<GameObject> objects;
 
+    private Vector2D gravityVector;
+
     //The size of the world in units. Didn't want to use pixels to avoid confusion.
     private int unitsX, unitsY;
+
+    //Some settings for a GameWorld
+    private boolean hasGravity;
 
     /**
      * Creates a new com.vengine.GameWorld.
@@ -45,8 +49,14 @@ public class GameWorld{
      */
     public final void update(){
         for(GameObject object : objects){
+            //If gravity is enabled in this world, add the gravityVector to all GameObjects
+            if(hasGravity && object.isAffectedByGravity()){
+                object.addVector(gravityVector);
+            }
             object.update();
         }
+
+        //Call afterUpdate()
         afterUpdate();
     }
 
@@ -72,6 +82,22 @@ public class GameWorld{
      */
     public void afterUpdate(){
 
+    }
+
+    public Vector2D getGravityVector() {
+        return gravityVector;
+    }
+
+    public void setGravityVector(Vector2D gravityVector) {
+        this.gravityVector = gravityVector;
+    }
+
+    public boolean isHasGravity() {
+        return hasGravity;
+    }
+
+    public void setHasGravity(boolean hasGravity) {
+        this.hasGravity = hasGravity;
     }
 
     public static GameWorld read(GameWorldFile file){
