@@ -1,3 +1,5 @@
+package com.vengine;
+
 import javafx.scene.canvas.Canvas;
 import main.GameWorldFile;
 
@@ -9,37 +11,37 @@ import java.util.ArrayList;
  */
 public class GameWorld{
 
-    //All GameObjects in this GameWorld
+    //All GameObjects in this com.vengine.GameWorld
     private ArrayList<GameObject> objects;
 
     //The size of the world in units. Didn't want to use pixels to avoid confusion.
     private int unitsX, unitsY;
 
     /**
-     * Creates a new GameWorld.
+     * Creates a new com.vengine.GameWorld.
      */
     public GameWorld(){
         this.objects = new ArrayList<GameObject>();
     }
 
     /**
-     * Adds the specified GameObject to this GameWorld.
-     * @param object The GameObject to be added.
+     * Adds the specified com.vengine.GameObject to this com.vengine.GameWorld.
+     * @param object The com.vengine.GameObject to be added.
      */
     public void addGameObject(GameObject object){
         this.objects.add(object);
     }
 
     /**
-     * Removes the specified GameObject from this GameWorld.
-     * @param object The GameObject to be removed.
+     * Removes the specified com.vengine.GameObject from this com.vengine.GameWorld.
+     * @param object The com.vengine.GameObject to be removed.
      */
     public void removeGameObject(GameObject object){
         this.objects.remove(object);
     }
 
     /**
-     * Updates the GameWorld, also calls afterUpdate().
+     * Updates the com.vengine.GameWorld, also calls afterUpdate().
      */
     public final void update(){
         for(GameObject object : objects){
@@ -73,6 +75,6 @@ public class GameWorld{
     }
 
     public static GameWorld read(GameWorldFile file){
-
+        return null;
     }
 }
