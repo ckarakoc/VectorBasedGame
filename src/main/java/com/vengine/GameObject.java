@@ -1,3 +1,5 @@
+package com.vengine;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +16,7 @@ public class GameObject {
     private boolean isTargetable, hasHealth, doesCollideWithTerrain, doesCollideWithObjects;
 
     /**
-     * Creates a new GameObject.
+     * Creates a new com.vengine.GameObject.
      */
     public GameObject(){
         vectors = new ArrayList<Vector2D>();
@@ -22,16 +24,16 @@ public class GameObject {
     }
 
     /**
-     * Adds the specified Vector2D to this GameObject.
-     * @param v The Vector2D to be added
+     * Adds the specified com.vengine.Vector2D to this com.vengine.GameObject.
+     * @param v The com.vengine.Vector2D to be added
      */
     public void addVector(Vector2D v){
         this.vectors.add(v);
     }
 
     /**
-     * Removes the specified Vector2D from this GameObject.
-     * @param v The Vector2D to be removed
+     * Removes the specified com.vengine.Vector2D from this com.vengine.GameObject.
+     * @param v The com.vengine.Vector2D to be removed
      */
     public void removeVector(Vector2D v){
         this.vectors.remove(v);
@@ -45,13 +47,28 @@ public class GameObject {
     }
 
     /**
-     * Updates the GameObject, also calls afterUpdate().
+     * Updates the com.vengine.GameObject, also calls afterUpdate().
      */
     public final void update(){
         //Update object
 
+        //Calculate moving direction and distance from all Vector2Ds in this com.vengine.GameObject
+        moveObject();
+
         //Call afterUpdate()
         afterUpdate();
+    }
+
+    private void moveObject(){
+        Vector2D resultVector = new Vector2D();
+
+        for(Vector2D v : vectors){
+            resultVector.setX(resultVector.getX() + v.getX());
+            resultVector.setY(resultVector.getY() + v.getY());
+        }
+
+        this.x += resultVector.getX();
+        this.y += resultVector.getY();
     }
 
     public int getX(){
