@@ -1,6 +1,7 @@
 package com.vengine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Celal on 2-2-2016.
@@ -85,10 +86,15 @@ public class GameObject {
             //Added x and y values to resultVector
             resultVector.setX(resultVector.getX() + v.getX());
             resultVector.setY(resultVector.getY() + v.getY());
-
-            //After a Vector2D has been processed, we remove it from the list for the next tick
-            this.vectors.remove(v);
         }
+
+        //Remove all Vector2Ds from vectors
+        /*
+            DESIGN PROBLEM:
+                Should we remove all Vector2Ds, then developers would have to re-add Vector2Ds that always occur.
+                We could remove just the gravityVector, since that Vector2D is always added in the GameWorld.update() method. But then developers have to remove Vector2Ds that are not the gravityVector manually.
+         */
+        vectors = new ArrayList<Vector2D>();
 
         //Finally, add the resultVector x and y values to the current coordinate.
         this.x += resultVector.getX();
