@@ -74,10 +74,15 @@ public class GameObject {
         afterUpdate();
     }
 
+    /**
+     * This method handles the adding of all Vector2Ds in ArrayList<Vector2D> vectors together and lastly adds them to the current coordinates.
+     */
     private void moveObject(){
+        //This Vector2D will be the final Vector2D resulting from adding all Vector2Ds together.
         Vector2D resultVector = new Vector2D();
 
         for(Vector2D v : vectors){
+            //Added x and y values to resultVector
             resultVector.setX(resultVector.getX() + v.getX());
             resultVector.setY(resultVector.getY() + v.getY());
 
@@ -85,6 +90,7 @@ public class GameObject {
             this.vectors.remove(v);
         }
 
+        //Finally, add the resultVector x and y values to the current coordinate.
         this.x += resultVector.getX();
         this.y += resultVector.getY();
     }
