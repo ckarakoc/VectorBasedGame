@@ -13,14 +13,29 @@ public class GameObject {
     private int x, y;
     private int width, height;//Should we allow for non rectangular hitboxes?
 
-    private boolean isTargetable, hasHealth, doesCollideWithTerrain, doesCollideWithObjects;
+    private boolean isTargetable,
+            hasHealth,
+            doesCollideWithTerrain,
+            doesCollideWithObjects,
+            isAffectedByGravity;
 
     /**
      * Creates a new com.vengine.GameObject.
+     * Sets certain default settings:
+     *      A GameObject has per default these settings:
+     *          isTargetable: true
+     *          hasHealth: true
+     *          doesCollideWithTerrain: true
+     *          doesColligeWithObjects: false
+     *          isAffectedByGravity: true
      */
     public GameObject(){
         vectors = new ArrayList<Vector2D>();
-
+        this.setIsTargetable(true);
+        this.setHasHealth(true);
+        this.setDoesCollideWithTerrain(true);
+        this.setDoesCollideWithObjects(false);
+        this.setIsAffectedByGravity(true);
     }
 
     /**
@@ -65,10 +80,17 @@ public class GameObject {
         for(Vector2D v : vectors){
             resultVector.setX(resultVector.getX() + v.getX());
             resultVector.setY(resultVector.getY() + v.getY());
+
+            //After a Vector2D has been processed, we remove it from the list for the next tick
+            this.vectors.remove(v);
         }
 
         this.x += resultVector.getX();
         this.y += resultVector.getY();
+    }
+
+    public ArrayList<Vector2D> getVectors(){
+        return vectors;
     }
 
     public int getX(){
@@ -91,7 +113,7 @@ public class GameObject {
         return isTargetable;
     }
 
-    public void setTargetable(boolean targetable) {
+    public void setIsTargetable(boolean targetable) {
         isTargetable = targetable;
     }
 
@@ -118,4 +140,14 @@ public class GameObject {
     public void setDoesCollideWithObjects(boolean doesCollideWithObjects) {
         this.doesCollideWithObjects = doesCollideWithObjects;
     }
+
+    public boolean isAffectedByGravity(){
+        return this.isAffectedByGravity;
+    }
+
+    public void setIsAffectedByGravity(boolean val){
+        this.isAffectedByGravity = val;
+    }
+
+
 }
