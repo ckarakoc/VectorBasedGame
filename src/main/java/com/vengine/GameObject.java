@@ -1,7 +1,6 @@
 package com.vengine;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created by Celal on 2-2-2016.
@@ -23,14 +22,14 @@ public class GameObject {
     /**
      * Creates a new com.vengine.GameObject.
      * Sets certain default settings:
-     *      A GameObject has per default these settings:
-     *          isTargetable: true
-     *          hasHealth: true
-     *          doesCollideWithTerrain: true
-     *          doesColligeWithObjects: false
-     *          isAffectedByGravity: true
+     * A GameObject has per default these settings:
+     * isTargetable: true
+     * hasHealth: true
+     * doesCollideWithTerrain: true
+     * doesColligeWithObjects: false
+     * isAffectedByGravity: true
      */
-    public GameObject(){
+    public GameObject() {
         vectors = new ArrayList<Vector2D>();
         this.setIsTargetable(true);
         this.setHasHealth(true);
@@ -41,31 +40,33 @@ public class GameObject {
 
     /**
      * Adds the specified com.vengine.Vector2D to this com.vengine.GameObject.
+     *
      * @param v The com.vengine.Vector2D to be added
      */
-    public void addVector(Vector2D v){
+    public void addVector(Vector2D v) {
         this.vectors.add(v);
     }
 
     /**
      * Removes the specified com.vengine.Vector2D from this com.vengine.GameObject.
+     *
      * @param v The com.vengine.Vector2D to be removed
      */
-    public void removeVector(Vector2D v){
+    public void removeVector(Vector2D v) {
         this.vectors.remove(v);
     }
 
     /**
      * Method to be overridden by developers to be able to add code to update(). afterUpdate() is called after update(). (Mind == blown)
      */
-    public void afterUpdate(){
+    public void afterUpdate() {
 
     }
 
     /**
      * Updates the com.vengine.GameObject, also calls afterUpdate().
      */
-    public final void update(){
+    public final void update() {
         //Update object
 
         //Calculate moving direction and distance from all Vector2Ds in this com.vengine.GameObject
@@ -78,11 +79,11 @@ public class GameObject {
     /**
      * This method handles the adding of all Vector2Ds in ArrayList<Vector2D> vectors together and lastly adds them to the current coordinates.
      */
-    private void moveObject(){
+    private void moveObject() {
         //This Vector2D will be the final Vector2D resulting from adding all Vector2Ds together.
         Vector2D resultVector = new Vector2D();
 
-        for(Vector2D v : vectors){
+        for (Vector2D v : vectors) {
             //Added x and y values to resultVector
             resultVector.setX(resultVector.getX() + v.getX());
             resultVector.setY(resultVector.getY() + v.getY());
@@ -101,44 +102,49 @@ public class GameObject {
         this.y += resultVector.getY();
     }
 
-    public ArrayList<Vector2D> getVectors(){
+    public ArrayList<Vector2D> getVectors() {
         return vectors;
     }
 
     /**
      * Returns the X value of the coordinates that this GameObject is at.
+     *
      * @return int
      */
-    public int getX(){
+    public int getX() {
         return x;
     }
 
     /**
      * Sets the X value of the coordinates that this GameObject is at.
+     *
      * @param x New value for x
      */
-    public void setX(int x){
+    public void setX(int x) {
         this.x = x;
     }
 
     /**
      * Returns the Y value of the coordinates that this GameObject is at.
+     *
      * @return int
      */
-    public int getY(){
+    public int getY() {
         return y;
     }
 
     /**
      * Sets the Y value of the coordinates that this GameObject is at.
+     *
      * @param y New value for y
      */
-    public void setY(int y){
+    public void setY(int y) {
         this.y = y;
     }
 
     /**
      * The isTargetable property determines whether this GameObject can be hit by other GameObjects.
+     *
      * @return boolean
      */
     public boolean isTargetable() {
@@ -147,6 +153,7 @@ public class GameObject {
 
     /**
      * The isTargetable property determines whether this GameObject can be hit by other GameObjects.
+     *
      * @param targetable New value for isTargetable
      */
     public void setIsTargetable(boolean targetable) {
@@ -155,6 +162,7 @@ public class GameObject {
 
     /**
      * The hasHealth property determines whether this GameObject has health and is therefore killable. Changing this property when isTargetable is true has no effect.
+     *
      * @return boolean
      */
     public boolean hasHealth() {
@@ -163,6 +171,7 @@ public class GameObject {
 
     /**
      * The hasHealth property determines whether this GameObject has health and is therefore killable. Changing this property when isTargetable is true has no effect.
+     *
      * @param hasHealth New value for hasHealth
      */
     public void setHasHealth(boolean hasHealth) {
@@ -171,6 +180,7 @@ public class GameObject {
 
     /**
      * The doesCollideWithTerrain property determines whether this GameObject can move through terrain or not.
+     *
      * @return boolean
      */
     public boolean doesCollideWithTerrain() {
@@ -179,6 +189,7 @@ public class GameObject {
 
     /**
      * The doesCollideWithTerrain property determines whether this GameObject can move through terrain or not.
+     *
      * @param doesCollideWithTerrain New value for doesCollideWithTerrain
      */
     public void setDoesCollideWithTerrain(boolean doesCollideWithTerrain) {
@@ -187,6 +198,7 @@ public class GameObject {
 
     /**
      * The doesCollideWithObjects property determines whether this GameObject can move through other GameObjects or not.
+     *
      * @return boolean
      */
     public boolean doesCollideWithObjects() {
@@ -195,6 +207,7 @@ public class GameObject {
 
     /**
      * The doesCollideWithObjects property determines whether this GameObject can move through other GameObjects or not.
+     *
      * @param doesCollideWithObjects New value for doesCollideWithObjects
      */
     public void setDoesCollideWithObjects(boolean doesCollideWithObjects) {
@@ -203,17 +216,19 @@ public class GameObject {
 
     /**
      * The isAffectedByGravity property determines whether this GameObject is affected by gravity.
+     *
      * @return boolean
      */
-    public boolean isAffectedByGravity(){
+    public boolean isAffectedByGravity() {
         return this.isAffectedByGravity;
     }
 
     /**
      * The isAffectedByGravity property determines whether this GameObject is affected by gravity.
+     *
      * @param isAffectedByGravity New value for isAffectedByGravity
      */
-    public void setIsAffectedByGravity(boolean isAffectedByGravity){
+    public void setIsAffectedByGravity(boolean isAffectedByGravity) {
         this.isAffectedByGravity = isAffectedByGravity;
     }
 
