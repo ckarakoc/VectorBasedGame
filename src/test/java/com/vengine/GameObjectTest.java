@@ -1,5 +1,5 @@
-import com.vengine.GameObject;
-import com.vengine.Vector2D;
+package com.vengine;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +40,15 @@ public class GameObjectTest {
 
     @Test
     public void testRemoveVector() throws Exception {
+        Vector2D v = new Vector2D(1, 2);
 
+        object.addVector(v);
+        object.removeVector(v);
+
+
+        ArrayList<Vector2D> vectorList = new ArrayList<Vector2D>();
+
+        assertEquals(object.getVectors(), vectorList);
     }
 
     @Test
