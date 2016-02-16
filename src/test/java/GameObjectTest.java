@@ -1,13 +1,13 @@
-package com.vengine.tests;
-
 import com.vengine.GameObject;
 import com.vengine.Vector2D;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * Created by Lars on 14/02/2016.
@@ -26,7 +26,7 @@ public class GameObjectTest {
         object = null;
     }
 
-    @org.junit.Test
+    @Test
     public void testAddVector() throws Exception {
         Vector2D v = new Vector2D(1, 2);
 
@@ -38,12 +38,12 @@ public class GameObjectTest {
         assertEquals(object.getVectors(), vectorList);
     }
 
-    @org.junit.Test
+    @Test
     public void testRemoveVector() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testUpdate() throws Exception {
         Vector2D v = new Vector2D(1, 2);
 
